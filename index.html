@@ -7,797 +7,725 @@
 <title>Facilitatorens værktøjskasse</title>
 <style>
 :root {
-  --navy:#20334a;
-  --blue:#527da5;
-  --pale:#edf3f8;
-  --cream:#f7f6f2;
-  --ink:#273444;
-  --muted:#687586;
-  --line:#dce3e9;
+  --navy:#172b43;
+  --navy-light:#29445f;
+  --cream:#f7f5ef;
   --white:#fff;
+  --ink:#243447;
+  --muted:#697887;
+  --line:#e2e5e5;
+  --teal:#7ca9a1;
+  --teal-light:#e8f0ed;
+  --gold:#d5b77b;
+  --shadow:0 12px 35px rgba(23,43,67,.08);
 }
-* { box-sizing:border-box; }
-body {
-  margin:0;
-  background:var(--cream);
-  color:var(--ink);
-  font-family:Arial,sans-serif;
-  line-height:1.55;
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.6;
 }
-header {
-  background:var(--navy);
-  color:white;
-  padding:34px 22px;
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{
+  background:var(--navy);color:white;padding:22px 24px;
 }
-.header-inner,main {
-  max-width:920px;
-  margin:auto;
+.header-inner{
+  max-width:1040px;margin:auto;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;
 }
-.eyebrow {
-  text-transform:uppercase;
-  letter-spacing:1.5px;
-  font-size:12px;
-  opacity:.8;
-  font-weight:bold;
+.brand{font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.header-note{font-size:13px;color:#cbd5df}
+main{max-width:920px;margin:42px auto;padding:0 22px 70px}
+.hero{margin-bottom:30px}
+.eyebrow{
+  color:#648d85;text-transform:uppercase;letter-spacing:.13em;
+  font-size:12px;font-weight:750;margin-bottom:10px
 }
-h1 { margin:8px 0; font-size:30px; }
-header p { margin:0; color:#e1e9f0; max-width:700px; }
-main { padding:28px 18px 60px; }
-.progress {
-  display:none;
-  gap:8px;
-  margin-bottom:24px;
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(32px,5vw,48px);line-height:1.12;color:var(--navy);margin-bottom:16px;letter-spacing:-.035em}
+h2{font-size:25px;color:var(--navy);margin-bottom:8px;letter-spacing:-.02em}
+h3{font-size:17px;color:var(--navy);margin-bottom:8px}
+.lead{font-size:17px;color:#526273;max-width:720px}
+.panel{
+  background:var(--white);border:1px solid var(--line);border-radius:18px;
+  padding:28px;margin:20px 0;box-shadow:var(--shadow)
 }
-.progress span {
-  height:5px;
-  flex:1;
-  background:#dce3e9;
-  border-radius:10px;
+.panel-heading{margin-bottom:22px}
+.panel-heading p{color:var(--muted);margin-bottom:0}
+.intro-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px
 }
-.progress span.active { background:var(--blue); }
-.panel {
-  background:white;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:25px;
-  margin-bottom:20px;
-  box-shadow:0 3px 12px rgba(32,51,74,.04);
+.intro-tile{
+  background:#f7f8f6;border:1px solid var(--line);border-radius:12px;
+  padding:16px
 }
-h2 { color:var(--navy); margin:0 0 10px; font-size:22px; }
-h3 { color:var(--navy); margin:0 0 8px; font-size:18px; }
-.intro { color:var(--muted); margin-top:0; }
-.case-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:18px;
+.intro-tile strong{display:block;color:var(--navy);margin-bottom:4px}
+.intro-tile span{font-size:14px;color:var(--muted)}
+.btn{
+  border:0;border-radius:9px;padding:13px 21px;font-weight:700;
+  transition:.18s ease;display:inline-flex;align-items:center;justify-content:center;gap:8px
 }
-.case-item {
-  background:var(--pale);
-  border-radius:10px;
-  padding:14px;
+.btn-primary{background:var(--navy);color:white}
+.btn-primary:hover{background:var(--navy-light);transform:translateY(-1px)}
+.btn-secondary{background:#edf0f1;color:var(--navy)}
+.btn-secondary:hover{background:#e2e8e8}
+.actions{display:flex;justify-content:space-between;gap:12px;margin-top:26px;flex-wrap:wrap}
+.field{margin:20px 0}
+.field label,.field-label{display:block;font-weight:650;color:var(--navy);margin-bottom:8px}
+.field small,.help{display:block;color:var(--muted);font-size:13px;margin-top:5px}
+input[type=text],input[type=number],select,textarea{
+  width:100%;border:1px solid #cfd7dc;border-radius:9px;padding:11px 12px;
+  background:white;color:var(--ink)
 }
-.case-item strong {
-  display:block;
-  color:var(--navy);
-  font-size:13px;
+input:focus,select:focus,textarea:focus{
+  outline:3px solid rgba(124,169,161,.22);border-color:var(--teal)
 }
-.case-item p { margin:5px 0 0; font-size:14px; }
-.question {
-  padding:18px 0;
-  border-bottom:1px solid var(--line);
+.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.choice{
+  display:flex;gap:10px;align-items:flex-start;padding:12px;
+  border:1px solid var(--line);border-radius:10px;background:#fff;
+  cursor:pointer;font-size:14px
 }
-.question:last-child { border-bottom:0; }
-.question-text { font-weight:600; margin-bottom:12px; }
-.scale-row {
-  display:flex;
-  align-items:center;
-  gap:12px;
+.choice:has(input:checked){border-color:var(--teal);background:var(--teal-light)}
+.choice input{margin-top:4px;accent-color:var(--navy)}
+.question{
+  padding:18px 0;border-bottom:1px solid var(--line)
 }
-.scale-row input {
-  flex:1;
-  accent-color:var(--blue);
-  cursor:pointer;
+.question:last-child{border-bottom:0}
+.question p{font-weight:600;margin-bottom:13px;color:var(--navy)}
+.scale{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:8px
 }
-.scale-value {
-  min-width:30px;
-  text-align:center;
-  font-weight:bold;
-  color:var(--navy);
-  background:var(--pale);
-  border-radius:7px;
-  padding:4px;
+.scale label{
+  text-align:center;border:1px solid var(--line);border-radius:9px;
+  padding:9px 5px;font-size:13px;color:var(--muted);cursor:pointer
 }
-.scale-labels {
-  display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:12px;
-  margin-top:4px;
+.scale label:has(input:checked){background:var(--navy);color:white;border-color:var(--navy)}
+.scale input{display:block;margin:0 auto 5px;accent-color:var(--teal)}
+.scale-legend{
+  display:flex;justify-content:space-between;color:var(--muted);
+  font-size:12px;margin-top:8px
 }
-.field { margin:18px 0; }
-.field label {
-  display:block;
-  font-weight:600;
-  color:var(--navy);
-  margin-bottom:7px;
+.disc-item{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center;
+  padding:14px 0;border-bottom:1px solid var(--line)
 }
-select {
-  width:100%;
-  padding:12px;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:white;
-  color:var(--ink);
-  font-size:15px;
+.disc-item:last-child{border-bottom:0}
+.disc-item label{font-weight:600;color:var(--navy);font-size:14px}
+.disc-item select{max-width:180px}
+.progress-wrap{height:5px;background:#e5e9e8;border-radius:9px;overflow:hidden;margin:0 0 28px}
+.progress-bar{height:100%;width:0;background:var(--teal);transition:width .25s}
+.step-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:8px}
+.hidden{display:none!important}
+.result-card{
+  border:1px solid var(--line);border-radius:13px;padding:20px;margin:13px 0;background:#fff
 }
-.option-list { display:grid; gap:9px; }
-.option {
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  padding:11px 12px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  cursor:pointer;
-  font-weight:normal!important;
-  color:var(--ink)!important;
-  margin:0!important;
+.result-card h3{display:flex;align-items:center;gap:9px}
+.result-number{
+  display:inline-flex;width:27px;height:27px;border-radius:50%;
+  background:var(--teal-light);color:var(--navy);align-items:center;
+  justify-content:center;font-size:13px;flex-shrink:0
 }
-.option:hover { background:#f7f9fb; }
-.option input { margin-top:5px; accent-color:var(--blue); }
-button {
-  border:0;
-  border-radius:8px;
-  padding:13px 20px;
-  background:var(--navy);
-  color:white;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
+.result-label{
+  display:inline-block;font-size:11px;text-transform:uppercase;
+  letter-spacing:.08em;color:#527c73;font-weight:750;margin-bottom:8px
 }
-button:hover { background:#304c69; }
-button.secondary {
-  background:white;
-  color:var(--navy);
-  border:1px solid var(--line);
+.result-card p{margin-bottom:9px}
+.result-card p:last-child{margin-bottom:0}
+.result-card .why{color:var(--muted);font-size:14px}
+.result-card .source{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+.profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.profile-box{background:#f6f8f7;border-radius:11px;padding:15px}
+.profile-box strong{display:block;color:var(--navy);font-size:14px}
+.profile-box span{font-size:13px;color:var(--muted)}
+.result-section{margin:30px 0}
+.notice{background:#f4f6f5;border-left:3px solid var(--teal);padding:14px 17px;border-radius:0 9px 9px 0;color:#536373;font-size:14px}
+.footer-note{font-size:12px;color:var(--muted);text-align:center;margin-top:35px}
+@media(max-width:640px){
+  main{margin:25px auto;padding:0 14px 50px}
+  .panel{padding:20px 16px}
+  .intro-grid,.choice-grid,.profile-grid{grid-template-columns:1fr}
+  .disc-item{grid-template-columns:1fr}
+  .disc-item select{max-width:none}
+  .header-note{display:none}
+  .scale{gap:4px}
+  .scale label{font-size:12px;padding:8px 2px}
 }
-.actions {
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:22px;
-}
-.hidden { display:none!important; }
-.result-card {
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:20px;
-  margin:15px 0;
-  background:white;
-}
-.result-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:10px;
-}
-.priority {
-  background:var(--pale);
-  color:var(--navy);
-  padding:5px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
-  white-space:nowrap;
-}
-.result-card p { margin:8px 0; }
-.result-card .source { color:var(--muted); font-size:13px; }
-.result-label {
-  font-size:12px;
-  font-weight:bold;
-  text-transform:uppercase;
-  letter-spacing:.5px;
-  color:var(--blue);
-  margin-top:14px;
-}
-.note {
-  background:#f5f7f9;
-  border-left:3px solid var(--blue);
-  padding:13px 16px;
-  border-radius:5px;
-  color:var(--muted);
-  font-size:13px;
-  margin-top:20px;
-}
-.tag {
-  display:inline-block;
-  background:var(--pale);
-  color:var(--navy);
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
-  margin:3px 4px 3px 0;
-}
-.summary {
-  background:#f7f9fb;
-  border:1px solid var(--line);
-  padding:15px;
-  border-radius:10px;
-  margin:12px 0;
-}
-.disc-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin:14px 0 24px;
-}
-.disc-card {
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:14px;
-  background:#fff;
-}
-.disc-card strong {
-  display:block;
-  color:var(--navy);
-  font-size:17px;
-  margin-bottom:4px;
-}
-.disc-card .disc-score {
-  font-size:22px;
-  font-weight:bold;
-  color:var(--blue);
-}
-.bar {
-  height:8px;
-  background:#e8edf2;
-  border-radius:10px;
-  overflow:hidden;
-  margin:8px 0;
-}
-.bar span {
-  display:block;
-  height:100%;
-  background:var(--blue);
-  border-radius:10px;
-}
-footer {
-  color:var(--muted);
-  font-size:12px;
-  text-align:center;
-  padding:20px;
-}
-@media(max-width:600px) {
-  h1 { font-size:25px; }
-  .panel { padding:18px; }
-  .case-grid,.disc-grid { grid-template-columns:1fr; }
-  .result-top {
-    align-items:flex-start;
-    flex-direction:column;
-  }
+@media print{
+  header,.actions,.progress-wrap{display:none!important}
+  body{background:white}
+  main{max-width:100%;margin:0;padding:0}
+  .panel{box-shadow:none;break-inside:avoid}
 }
 </style>
 </head>
-
 <body>
-
 <header>
   <div class="header-inner">
-    <div class="eyebrow">Digitalt forberedelsesværktøj</div>
-    <h1>Facilitatorens værktøjskasse</h1>
-    <p>Bliv opmærksom på din nonverbale kommunikation, og få konkrete fokuspunkter til din næste workshop.</p>
+    <div class="brand">Facilitatorens værktøjskasse</div>
+    <div class="header-note">Forberedelse til fysiske workshops og møder</div>
   </div>
 </header>
 
 <main>
-
-  <div class="progress" aria-label="Trin i værktøjet">
-    <span class="active" id="step1"></span>
-    <span id="step2"></span>
-    <span id="step3"></span>
-    <span id="step4"></span>
-    <span id="step5"></span>
-  </div>
-
-  <!-- FORSIDE -->
-  <section id="caseSection" class="panel">
-    <div class="eyebrow" style="color:#527da5">Din forberedelse</div>
-    <h2>Forbered din facilitering</h2>
-    <p class="intro">Bliv opmærksom på din nonverbale kommunikation, og få konkrete fokuspunkter til din næste workshop.</p>
-
-    <div class="case-grid">
-      <div class="case-item">
-        <strong>Din rolle</strong>
-        <p>Reflektér over dine egne faciliteringsvaner og din adfærd.</p>
-      </div>
-      <div class="case-item">
-        <strong>Deltagergruppen</strong>
-        <p>Skab overblik over deltagernes sammensætning og forudsætninger.</p>
-      </div>
-      <div class="case-item">
-        <strong>Rammen</strong>
-        <p>Beskriv de fysiske rammer for din facilitering.</p>
-      </div>
-      <div class="case-item">
-        <strong>Formålet</strong>
-        <p>Afklar, hvad du ønsker at opnå med workshoppen.</p>
-      </div>
+  <section id="welcome">
+    <div class="hero">
+      <div class="eyebrow">Et værktøj til din forberedelse</div>
+      <h1>Facilitér med nærvær og bevidsthed</h1>
+      <p class="lead">Bliv opmærksom på din egen faciliteringsadfærd, få indblik i deltagergruppen og modtag konkrete fokuspunkter til din næste workshop eller dit næste møde.</p>
     </div>
 
-    <div class="actions">
-      <button type="button" onclick="goTo('assessmentSection',2)">Start din forberedelse →</button>
-    </div>
-  </section>
-
-  <!-- TRIN 1 -->
-  <section id="assessmentSection" class="panel hidden">
-    <div class="eyebrow" style="color:#527da5">Trin 1 · Facilitatorens profil</div>
-    <h2>Hvordan faciliterer du typisk?</h2>
-    <p class="intro">Vurdér, i hvilken grad hvert udsagn passer på dig, når du faciliterer. Svar så ærligt som muligt – der er ingen rigtige eller forkerte svar.</p>
-    <p><strong>1 = Passer slet ikke</strong> · <strong>5 = Passer helt</strong></p>
-
-    <h3>Del 1 · Dine nonverbale faciliteringsvaner</h3>
-    <div id="questions"></div>
-
-    <h3 style="margin-top:28px">Del 2 · Din DISC-inspirerede adfærdstilgang</h3>
-    <p class="intro">De følgende udsagn handler om din typiske tilgang i samarbejde og facilitering. De er inspireret af DISC's fire adfærdsdimensioner, men udgør ikke en valideret DISC-test.</p>
-    <div id="discQuestions"></div>
-
-    <div class="actions">
-      <button type="button" class="secondary" onclick="goTo('caseSection',1)">← Tilbage</button>
-      <button type="button" onclick="goTo('groupSection',3)">Videre til deltagergruppen →</button>
-    </div>
-  </section>
-
-  <!-- TRIN 2 -->
-  <section id="groupSection" class="panel hidden">
-    <div class="eyebrow" style="color:#527da5">Trin 2 · Deltagergruppen</div>
-    <h2>Hvem skal du facilitere?</h2>
-    <p class="intro">Beskriv deltagergruppen ud fra de oplysninger, du har fået på forhånd. Du behøver ikke kende deltagerne personligt – vælg "Det ved jeg ikke", hvis informationen ikke er tilgængelig.</p>
-
-    <div class="field">
-      <label for="workArea">Hvilket arbejdsområde passer bedst på deltagergruppen?</label>
-      <select id="workArea">
-        <option value="Tværgående ledelse">Tværgående ledelse / flere afdelinger</option>
-        <option value="Sundhed og pleje">Sundhed og pleje</option>
-        <option value="Salg og marketing">Salg og marketing</option>
-        <option value="Produktion og drift">Produktion og drift</option>
-        <option value="IT og udvikling">IT og udvikling</option>
-        <option value="Økonomi og administration">Økonomi og administration</option>
-        <option value="Andet">Andet / blandet gruppe</option>
-        <option value="Ukendt">Jeg kender ikke deltagergruppen på forhånd</option>
-      </select>
-    </div>
-
-    <div id="groupQuestions"></div>
-
-    <div class="actions">
-      <button type="button" class="secondary" onclick="goTo('assessmentSection',2)">← Tilbage</button>
-      <button type="button" onclick="goTo('contextSection',4)">Videre til workshoprammen →</button>
-    </div>
-  </section>
-
-  <!-- TRIN 3 -->
-  <section id="contextSection" class="panel hidden">
-    <div class="eyebrow" style="color:#527da5">Trin 3 · Ramme og formål</div>
-    <h2>Hvad er situationen?</h2>
-    <p class="intro">Vælg de forhold, der bedst beskriver den fysiske workshop, du skal forberede.</p>
-
-    <div class="field">
-      <label for="location">Hvor skal workshoppen afholdes?</label>
-      <select id="location">
-        <option>Virksomhedens egne mødelokaler</option>
-        <option>Virksomhedens konference- eller kursusfaciliteter</option>
-        <option>Et eksternt konferencecenter eller kursussted</option>
-        <option>Et større fælleslokale, fx kantine eller auditorium</option>
-        <option>Andet / endnu ikke fastlagt</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="size">Hvor mange deltagere forventer du?</label>
-      <select id="size">
-        <option value="4-6">4–6 deltagere</option>
-        <option value="8" selected>7–10 deltagere</option>
-        <option value="12-15">11–15 deltagere</option>
-        <option value="16+">16 eller flere deltagere</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="purpose">Hvad er det vigtigste formål med workshoppen?</label>
-      <select id="purpose">
-        <option value="fælles forståelse">At skabe fælles forståelse</option>
-        <option value="idéudvikling">At udvikle idéer og muligheder</option>
-        <option value="beslutninger">At træffe beslutninger</option>
-        <option value="udfordringer">At identificere udfordringer og risici</option>
-        <option value="planlægning">At planlægge implementering og næste skridt</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="roomKnowledge">Hvor meget ved du om de fysiske rammer?</label>
-      <select id="roomKnowledge">
-        <option>Jeg har besøgt lokalet eller set billeder af det</option>
-        <option>Jeg har fået en overordnet beskrivelse af lokalet</option>
-        <option>Jeg ved kun, hvor workshoppen skal afholdes</option>
-        <option>Jeg har endnu ingen information om lokalet</option>
-      </select>
-    </div>
-
-    <div class="actions">
-      <button type="button" class="secondary" onclick="goTo('groupSection',3)">← Tilbage</button>
-      <button type="button" onclick="showResults()">Se mit forslag til fokuspunkter →</button>
-    </div>
-  </section>
-
-  <!-- RESULTATER -->
-  <section id="resultsSection" class="hidden">
     <div class="panel">
-      <div class="eyebrow" style="color:#527da5">Trin 4 · Dit resultat</div>
-      <h2>Dit forslag til fokuspunkter</h2>
-      <p class="intro">Her kombineres dine svar om dig selv, deltagergruppen og workshoprammen til et eksempel på personlige anbefalinger.</p>
-
-      <h3>Dine vigtigste opmærksomhedspunkter</h3>
-      <p class="intro">Her er de tre områder, hvor dine svar peger på, at du med fordel kan rette særlig opmærksomhed mod din nonverbale facilitering.</p>
-      <div id="results"></div>
-
-      <h3 style="margin-top:30px">Din DISC-inspirerede profil</h3>
-      <p class="intro">Profilen viser dine svar på fire adfærdstendenser. Den er til refleksion og er ikke en egentlig DISC-test.</p>
-      <div id="discResults" class="disc-grid"></div>
-
-      <h3 style="margin-top:30px">Forberedelse på deltagergruppen</h3>
-      <div id="groupResults"></div>
-
-      <h3 style="margin-top:30px">Workshoprammen</h3>
-      <div id="contextSummary" class="summary"></div>
-
-      <div class="note">
-        <strong>Om prototypen:</strong> Resultatet er en demonstration baseret på foruddefinerede regler og tekster – ikke en egentlig AI-analyse. I en færdig løsning kunne AI sammenholde de indsamlede profiler og workshopoplysninger med relevant forskning og generere mere nuancerede anbefalinger. Resultatet er vejledende og ikke en objektiv måling af facilitering eller deltagerengagement.
+      <div class="panel-heading">
+        <h2>Din forberedelse</h2>
+        <p>Værktøjet guider dig gennem fire områder, som tilsammen danner grundlag for dine personlige fokuspunkter.</p>
       </div>
-
+      <div class="intro-grid">
+        <div class="intro-tile"><strong>Din rolle</strong><span>Reflektér over dine egne faciliteringsvaner og din adfærd.</span></div>
+        <div class="intro-tile"><strong>Deltagergruppen</strong><span>Skab overblik over deltagernes sammensætning og forudsætninger.</span></div>
+        <div class="intro-tile"><strong>Rammen</strong><span>Beskriv de fysiske rammer for din facilitering.</span></div>
+        <div class="intro-tile"><strong>Formålet</strong><span>Afklar, hvad du ønsker at opnå med workshoppen.</span></div>
+      </div>
+      <div class="notice" style="margin-top:22px">
+        Der findes ikke rigtige eller forkerte svar. Besvar spørgsmålene ud fra din egen oplevelse og det, du ved om den konkrete situation.
+      </div>
       <div class="actions">
-        <button type="button" class="secondary" onclick="goTo('contextSection',4)">← Tilbage og tilpas</button>
-        <button type="button" onclick="resetTool()">Start forfra</button>
+        <span></span>
+        <button class="btn btn-primary" onclick="startTool()">Begynd forberedelsen →</button>
       </div>
     </div>
   </section>
 
-</main>
+  <section id="formArea" class="hidden">
+    <div class="progress-wrap"><div class="progress-bar" id="progress"></div></div>
 
-<footer>Prototype · Facilitatorens nonverbale værktøjer</footer>
+    <section class="step" id="step1">
+      <div class="step-label">Din forberedelse · 1 af 4</div>
+      <div class="panel">
+        <div class="panel-heading">
+          <h2>Din facilitering</h2>
+          <p>Tænk på, hvordan du typisk agerer, når du faciliterer en workshop eller et møde. Tag stilling til hvert udsagn ud fra din egen oplevelse.</p>
+        </div>
+
+        <div id="selfQuestions"></div>
+
+        <div class="notice" style="margin-top:20px">
+          Vælg det svar, der bedst beskriver din typiske adfærd. Du behøver ikke overanalysere de enkelte udsagn.
+        </div>
+
+        <div class="panel-heading" style="margin-top:28px">
+          <h3>Din personlige tilgang</h3>
+          <p>De følgende udsagn handler om forskellige måder at gå til en faciliteringsopgave på. Vælg det svar, der passer bedst på dig.</p>
+        </div>
+        <div id="discQuestions"></div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="goHome()">← Tilbage</button>
+          <button class="btn btn-primary" onclick="nextStep(1)">Næste →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="step hidden" id="step2">
+      <div class="step-label">Din forberedelse · 2 af 4</div>
+      <div class="panel">
+        <div class="panel-heading">
+          <h2>Deltagergruppen</h2>
+          <p>Beskriv det, du ved om deltagerne. Du behøver ikke kende alle på forhånd – vælg gerne "Det ved jeg ikke", hvis du mangler information.</p>
+        </div>
+
+        <div class="field">
+          <label for="groupType">Hvilke arbejdsområder repræsenterer deltagerne?</label>
+          <select id="groupType">
+            <option value="">Vælg det, der passer bedst</option>
+            <option>Sundhed og pleje</option>
+            <option>Salg og marketing</option>
+            <option>Produktion og drift</option>
+            <option>IT og udvikling</option>
+            <option>Økonomi og administration</option>
+            <option>Tværgående ledelse/flere afdelinger</option>
+            <option>Andet/blandet gruppe</option>
+            <option>Jeg kender ikke deltagergruppen på forhånd</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="groupSize">Hvor mange deltagere forventer du?</label>
+          <select id="groupSize">
+            <option value="">Vælg antal</option>
+            <option>2–5 deltagere</option>
+            <option>6–10 deltagere</option>
+            <option>11–20 deltagere</option>
+            <option>21–30 deltagere</option>
+            <option>Flere end 30 deltagere</option>
+            <option>Det ved jeg ikke endnu</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="knowEachOther">Kender deltagerne hinanden i forvejen?</label>
+          <select id="knowEachOther">
+            <option value="">Vælg svar</option>
+            <option>Ja, de arbejder tæt sammen</option>
+            <option>De kender nogle af hinanden</option>
+            <option>Nej, de kommer fra forskellige sammenhænge</option>
+            <option>Det ved jeg ikke</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="workshopExperience">Hvor meget erfaring har deltagerne med workshops?</label>
+          <select id="workshopExperience">
+            <option value="">Vælg svar</option>
+            <option>Meget erfaring</option>
+            <option>En vis erfaring</option>
+            <option>Begrænset erfaring</option>
+            <option>Meget forskellig erfaring</option>
+            <option>Det ved jeg ikke</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="changeKnowledge">Hvor meget ved deltagerne om emnet eller den forandring, workshoppen handler om?</label>
+          <select id="changeKnowledge">
+            <option value="">Vælg svar</option>
+            <option>De har et godt forhåndskendskab</option>
+            <option>De har lidt forhåndskendskab</option>
+            <option>De skal introduceres til emnet</option>
+            <option>Der er stor forskel på deres viden</option>
+            <option>Det ved jeg ikke</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="expectations">Hvad forventer deltagerne af workshoppen?</label>
+          <select id="expectations">
+            <option value="">Vælg svar</option>
+            <option>At få information og viden</option>
+            <option>At bidrage med idéer og perspektiver</option>
+            <option>At løse en konkret opgave sammen</option>
+            <option>At træffe beslutninger</option>
+            <option>Det er uklart eller ukendt</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="nextStep(0)">← Tilbage</button>
+          <button class="btn btn-primary" onclick="nextStep(2)">Næste →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="step hidden" id="step3">
+      <div class="step-label">Din forberedelse · 3 af 4</div>
+      <div class="panel">
+        <div class="panel-heading">
+          <h2>De fysiske rammer</h2>
+          <p>Beskriv de rammer, du skal facilitere inden for. Hvis du endnu ikke kender lokalet, kan du vælge det.</p>
+        </div>
+
+        <div class="field">
+          <label for="location">Hvor skal workshoppen foregå?</label>
+          <select id="location">
+            <option value="">Vælg placering</option>
+            <option>Virksomhedens mødelokale</option>
+            <option>Virksomhedens konference- eller kursusfaciliteter</option>
+            <option>Eksternt konferencecenter eller kursussted</option>
+            <option>Større fælleslokale (fx kantine eller auditorium)</option>
+            <option>Andet</option>
+            <option>Det er endnu ikke besluttet</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="roomKnowledge">Hvor meget ved du om lokalets indretning?</label>
+          <select id="roomKnowledge">
+            <option value="">Vælg svar</option>
+            <option>Jeg kender lokalet og indretningen</option>
+            <option>Jeg kender lokalet, men ikke den konkrete opstilling</option>
+            <option>Jeg har kun begrænset information</option>
+            <option>Jeg kender ikke lokalet endnu</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="setup">Hvordan forventer du, at deltagerne sidder?</label>
+          <select id="setup">
+            <option value="">Vælg svar</option>
+            <option>Rundt om et mødebord</option>
+            <option>I grupper ved flere borde</option>
+            <option>I hestesko eller U-form</option>
+            <option>På rækker med front mod facilitator</option>
+            <option>En fleksibel eller anden opstilling</option>
+            <option>Det ved jeg ikke endnu</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="roomSize">Hvordan vil du beskrive rummet?</label>
+          <select id="roomSize">
+            <option value="">Vælg svar</option>
+            <option>Et mindre lokale med begrænset plads</option>
+            <option>Et almindeligt mødelokale</option>
+            <option>Et stort lokale med god plads til bevægelse</option>
+            <option>Et større fælleslokale eller auditorium</option>
+            <option>Det ved jeg ikke endnu</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="nextStep(1)">← Tilbage</button>
+          <button class="btn btn-primary" onclick="nextStep(3)">Næste →</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="step hidden" id="step4">
+      <div class="step-label">Din forberedelse · 4 af 4</div>
+      <div class="panel">
+        <div class="panel-heading">
+          <h2>Formålet med workshoppen</h2>
+          <p>Afslut med at beskrive, hvad du skal facilitere, og hvad du gerne vil opnå.</p>
+        </div>
+
+        <div class="field">
+          <label for="meetingType">Hvilken type workshop eller møde skal du facilitere?</label>
+          <select id="meetingType">
+            <option value="">Vælg type</option>
+            <option>Idéudvikling</option>
+            <option>Problemløsning</option>
+            <option>Beslutningsmøde</option>
+            <option>Informationsdeling</option>
+            <option>Planlægning og koordinering</option>
+            <option>Dialog og fælles refleksion</option>
+            <option>Andet</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="purpose">Hvad er det vigtigste formål?</label>
+          <select id="purpose">
+            <option value="">Vælg formål</option>
+            <option>At skabe fælles forståelse</option>
+            <option>At få flere perspektiver frem</option>
+            <option>At udvikle idéer og muligheder</option>
+            <option>At identificere udfordringer</option>
+            <option>At nå frem til en beslutning</option>
+            <option>At skabe en konkret plan eller handling</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="duration">Hvor lang tid varer workshoppen eller mødet?</label>
+          <select id="duration">
+            <option value="">Vælg varighed</option>
+            <option>Under 1 time</option>
+            <option>1–2 timer</option>
+            <option>2–4 timer</option>
+            <option>En halv dag</option>
+            <option>En hel dag eller længere</option>
+            <option>Det er ikke fastlagt endnu</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="extraInfo">Er der andet, du allerede ved, som kan have betydning?</label>
+          <textarea id="extraInfo" rows="3" placeholder="Skriv eventuelt et par stikord ..."></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-secondary" onclick="nextStep(2)">← Tilbage</button>
+          <button class="btn btn-primary" onclick="showResults()">Se mine fokuspunkter →</button>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section id="results" class="hidden">
+    <div class="hero">
+      <div class="eyebrow">Din forberedelse er klar</div>
+      <h1>Dine personlige fokuspunkter</h1>
+      <p class="lead">Her er tre områder, du med fordel kan være særligt opmærksom på i din kommende facilitering.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-heading">
+        <h2>Start med disse tre fokuspunkter</h2>
+        <p>Anbefalingerne tager udgangspunkt i dine svar og er tænkt som konkrete påmindelser – ikke som faste regler for god facilitering.</p>
+      </div>
+      <div id="focusResults"></div>
+    </div>
+
+    <div class="panel result-section">
+      <div class="panel-heading">
+        <h2>Din personlige tilgang</h2>
+        <p>En opsummering af dine svar på udsagnene om din tilgang til faciliteringsopgaven.</p>
+      </div>
+      <div id="discResults" class="profile-grid"></div>
+      <p class="help" style="margin-top:15px">Profilen er en refleksionsramme og ikke en personlighedstest eller en fast kategorisering af dig som facilitator.</p>
+    </div>
+
+    <div class="panel result-section">
+      <div class="panel-heading">
+        <h2>Forberedelse til deltagergruppen</h2>
+        <p>Overvejelser, der kan hjælpe dig med at tilpasse din facilitering til den gruppe, du skal møde.</p>
+      </div>
+      <div id="groupResults"></div>
+    </div>
+
+    <div class="panel result-section">
+      <div class="panel-heading">
+        <h2>Opmærksomhed på rammer og formål</h2>
+        <p>Brug disse forhold som en sidste del af din forberedelse.</p>
+      </div>
+      <div id="contextResults"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-secondary" onclick="restartTool()">↻ Start forfra</button>
+      <button class="btn btn-primary" onclick="window.print()">Print mine fokuspunkter</button>
+    </div>
+    <p class="footer-note">Facilitatorens værktøjskasse · Et refleksions- og forberedelsesværktøj</p>
+  </section>
+</main>
 
 <script>
 const questions = [
   "Når der bliver stille efter et spørgsmål, siger jeg hurtigt noget igen.",
   "Jeg svarer nogle gange selv på mit eget spørgsmål.",
-  "Hvis ingen svarer, gentager jeg bare spørgsmålet.",
-  "Jeg står stille med hænderne samlet, når jeg stiller spørgsmål.",
-  "Min stemme bliver flad eller hurtig, når jeg er nervøs.",
   "Jeg taler i samme tempo og toneleje det meste af tiden.",
-  "Jeg bliver stående ved bordet, skærmen eller tavlen.",
-  "Jeg ser mest på de samme få personer.",
-  "Jeg glemmer min kropsholdning, når jeg koncentrerer mig om indholdet.",
-  "Jeg taler mere end deltagerne."
+  "Min stemme bliver flad eller hurtig, når jeg er nervøs.",
+  "Jeg er ikke altid opmærksom på mit ansigtsudtryk, når jeg lytter til deltagerne.",
+  "Jeg står ofte stille eller med hænderne samlet, når jeg faciliterer.",
+  "Jeg ser mest på de samme få personer, når jeg faciliterer.",
+  "Jeg har svært ved at fordele min øjenkontakt mellem deltagerne, når jeg stiller spørgsmål.",
+  "Jeg bliver ofte stående bag bordet, skærmen eller tavlen.",
+  "Jeg er ikke altid opmærksom på, hvordan min placering påvirker deltagernes mulighed for at bidrage."
 ];
 
-const principles = [
+const focusAreas = [
   {
-    id:1,
-    title:"Hold pausen",
+    id:"pause",title:"Hold pausen",
     questions:[0,1],
-    source:"Güneş & Girgin (2025)",
-    awareness:"Du kan have en tendens til hurtigt at udfylde stilheden eller selv besvare dine spørgsmål.",
-    action:"Stil spørgsmålet, og vent 3–5 sekunder, før du siger mere. Giv deltagerne tid til at tænke og formulere deres svar.",
-    context:"I en gruppe med ledere fra forskellige afdelinger kan refleksionstid give plads til, at flere når at overveje deres perspektiv på forandringen."
+    action:"Når du stiller et spørgsmål, så giv deltagerne 3–5 sekunder til at tænke, før du siger mere. Undgå at besvare dit eget spørgsmål eller udfylde stilheden for hurtigt.",
+    why:"En kort pause giver deltagerne tid til at formulere deres tanker og mulighed for at komme på banen.",
+    source:"Güneş & Girgin (2025)."
   },
   {
-    id:2,
-    title:"Brug kroppen, når pausen ikke er nok",
+    id:"voice",title:"Variér din stemme",
     questions:[2,3],
-    source:"Güneş & Girgin (2025)",
-    awareness:"Du kan have en tendens til at gentage spørgsmålet eller stå meget stille, når deltagerne ikke reagerer.",
-    action:"Undgå blot at gentage spørgsmålet. Træd eventuelt et skridt frem, brug en åben håndbevægelse mod rummet, og gør spørgsmålet lettere at svare på.",
-    context:"Når du ikke kender gruppen, kan en tydelig og imødekommende kropslig invitation hjælpe med at åbne for deltagernes bidrag."
+    action:"Variér tempo, toneleje og betoning, når du taler. Brug pauser og fremhæv centrale pointer, så din stemme understøtter det, du formidler.",
+    why:"Variation i stemmeføringen kan understøtte opmærksomhed og engagement i formidlingen.",
+    source:"Marty-Dugas et al. (2024)."
   },
   {
-    id:3,
-    title:"Varier stemmen",
+    id:"body",title:"Vær opmærksom på dit kropssprog",
     questions:[4,5],
-    source:"Marty-Dugas et al. (2024)",
-    awareness:"Din stemme kan blive flad eller have et ensartet tempo og toneleje.",
-    action:"Variér stemmens toneleje og betoning. Brug særligt variation, når du fremhæver centrale pointer eller stiller spørgsmål.",
-    context:"Når du formidler en kommende organisatorisk forandring, kan variation i stemmen hjælpe med at tydeliggøre vigtige pointer og fastholde opmærksomheden."
+    action:"Vær opmærksom på dit ansigtsudtryk, mens du lytter. Lad din mimik vise, at du følger med, uden at du behøver at smile hele tiden. Brug naturlige og åbne håndbevægelser, når du inviterer til dialog, og vær opmærksom på din kropsholdning.",
+    why:"Mimik, gestik og kropsholdning indgår i den samlede måde, du møder og kommunikerer med deltagerne på.",
+    source:"Zheng (2021); Patterson, Fridlund & Crivelli (2023)."
   },
   {
-    id:4,
-    title:"Vis nærvær",
+    id:"eye",title:"Fordel din øjenkontakt",
     questions:[6,7],
-    source:"Zheng (2021)",
-    awareness:"Du kan have en tendens til at blive ved bordet eller skærmen og primært rette opmærksomheden mod enkelte deltagere.",
-    action:"Vend kroppen mod deltagerne, fordel blikket i rummet, og bevæg dig væk fra bordet eller skærmen, når situationen tillader det.",
-    context:"Da deltagerne kommer fra forskellige afdelinger, er det relevant at være opmærksom på at fordele din kontakt på tværs af gruppen."
+    action:"Fordel din øjenkontakt mellem deltagerne, og lad blikket bevæge sig rundt i rummet, når du stiller spørgsmål. Vær opmærksom på også at inkludere de deltagere, der endnu ikke har bidraget.",
+    why:"En mere fordelt opmærksomhed kan understøtte deltagernes oplevelse af at blive inkluderet i dialogen.",
+    source:"Zheng (2021)."
   },
   {
-    id:5,
-    title:"Du bliver aflæst hele tiden",
+    id:"position",title:"Vær bevidst om din placering",
     questions:[8,9],
-    source:"Stein (1975)",
-    awareness:"Du kan komme til at overse din kropsholdning eller fylde meget i samtalen.",
-    action:"Vær opmærksom på din kropsholdning, og giv plads til deltagernes bidrag. Overvej, om du taler mere end nødvendigt.",
-    context:"Workshoppen skal skabe fælles forståelse og identificere udfordringer. Derfor er det vigtigt, at deltagerne også får plads til at bidrage med deres perspektiver."
+    action:"Vær opmærksom på, hvor du placerer dig i rummet. Undgå at blive stående bag bordet eller skærmen gennem hele workshoppen. Bevæg dig efter behov, og vælg positioner, hvor deltagerne kan se og høre dig uden at blive begrænset i deres indbyrdes dialog.",
+    why:"Din placering kan have betydning for, hvordan deltagerne kan se, høre og interagere med både dig og hinanden.",
+    source:"Zheng (2021); Stewart (2006)."
   }
 ];
 
-const groupQuestions = [
-  {
-    q:"Hvilken erfaring har deltagerne med at arbejde sammen?",
-    a:[
-      ["De arbejder til daglig tæt sammen.",{kind:"known",text:"Deltagerne har erfaring med dagligt samarbejde. Overvej at bygge videre på deres fælles arbejdserfaring og bruge konkrete eksempler fra deres praksis."}],
-      ["De samarbejder lejlighedsvis.",{kind:"known",text:"Deltagerne har noget erfaring med samarbejde. Skab en tydelig ramme, hvor de kan afstemme deres forskellige perspektiver."}],
-      ["De arbejder normalt uafhængigt af hinanden.",{kind:"known",text:"Deltagerne har muligvis begrænset erfaring med fælles opgaver. Gør formålet og behovet for tværgående dialog tydeligt."}],
-      ["Det ved jeg ikke.",{kind:"unknown"}]
-    ]
-  },
-  {
-    q:"Hvilken erfaring har deltagerne med workshopformatet?",
-    a:[
-      ["De deltager ofte i workshops.",{kind:"known",text:"Deltagerne kender sandsynligvis workshopformatet. Du kan bruge en kort introduktion og hurtigt komme til arbejdsprocessen."}],
-      ["De har begrænset erfaring med workshops.",{kind:"known",text:"Forklar kort, hvordan workshoppen kommer til at foregå, og hvad du forventer af deltagernes aktive medvirken."}],
-      ["Gruppen har blandet erfaring.",{kind:"known",text:"Gør format og forventninger tydelige, så alle får et fælles udgangspunkt."}],
-      ["Det ved jeg ikke.",{kind:"unknown"}]
-    ]
-  },
-  {
-    q:"Hvilken information har du om deltagernes forventninger til workshoppen?",
-    a:[
-      ["Jeg kender deres forventninger.",{kind:"known",text:"Inddrag deltagernes kendte forventninger i din introduktion, og gør det tydeligt, hvordan workshoppen forholder sig til dem."}],
-      ["Jeg har fået overordnede oplysninger om forventningerne.",{kind:"known",text:"Brug introduktionen til at afstemme forventninger og invitere deltagerne til at supplere."}],
-      ["Jeg har ikke fået information om deres forventninger.",{kind:"unknown",text:"Start med at afstemme forventningerne i rummet, fx ved at spørge, hvad deltagerne håber at få ud af workshoppen."}],
-      ["Det ved jeg ikke.",{kind:"unknown"}]
-    ]
-  },
-  {
-    q:"Hvilken information har du om deltagernes kendskab til den kommende forandring?",
-    a:[
-      ["De har allerede fået information om forandringen.",{kind:"known",text:"Undersøg kort, hvad deltagerne allerede ved, så workshoppen kan bygge videre på deres eksisterende viden."}],
-      ["De skal introduceres til forandringen på workshoppen.",{kind:"known",text:"Afsæt tid til at skabe et fælles informationsgrundlag, før I går videre til drøftelser og udfordringer."}],
-      ["Deltagerne har sandsynligvis forskelligt kendskab.",{kind:"known",text:"Skab plads til at afklare forskellige udgangspunkter, så ingen bliver hægtet af i dialogen."}],
-      ["Det ved jeg ikke.",{kind:"unknown"}]
-    ]
-  },
-  {
-    q:"Hvordan er deltagergruppen sammensat?",
-    a:[
-      ["Deltagerne kommer fra samme afdeling.",{kind:"known",text:"Tag udgangspunkt i deltagernes fælles organisatoriske tilhørsforhold og de opgaver, de deler."}],
-      ["Deltagerne kommer fra forskellige afdelinger.",{kind:"known",text:"Gør det tydeligt, hvordan de forskellige afdelingers perspektiver kan bidrage til workshoppen."}],
-      ["Deltagerne har forskellige faglige funktioner og ansvarsområder.",{kind:"known",text:"Invitér deltagerne til at sætte ord på deres forskellige ansvarsområder og perspektiver."}],
-      ["Det ved jeg ikke.",{kind:"unknown"}]
-    ]
-  }
+const discItems = [
+  {id:"D",name:"Handlekraft og fremdrift",desc:"Jeg tager gerne initiativ og hjælper gruppen med at komme videre."},
+  {id:"I",name:"Dialog og involvering",desc:"Jeg lægger vægt på energi, dialog og at få flere perspektiver frem."},
+  {id:"S",name:"Stabilitet og samarbejde",desc:"Jeg prioriterer tryghed, struktur og plads til forskellige behov."},
+  {id:"C",name:"Analyse og grundighed",desc:"Jeg foretrækker at skabe overblik og arbejde systematisk med indholdet."}
 ];
 
-const discQuestions = [
-  {id:"D",title:"Dominans",statement:"Når jeg faciliterer, tager jeg gerne styringen og træffer beslutninger, så gruppen kommer videre."},
-  {id:"I",title:"Indflydelse",statement:"Jeg lægger vægt på at skabe energi, engagement og en positiv stemning i gruppen."},
-  {id:"S",title:"Stabilitet",statement:"Jeg prioriterer at lytte, skabe tryghed og sikre, at deltagerne får tid til at bidrage."},
-  {id:"C",title:"Kompetence",statement:"Jeg foretrækker at skabe struktur, tydelige rammer og et grundigt fagligt grundlag."}
-];
-
-// Opret spørgsmål om facilitatorens vaner
-const qContainer = document.getElementById("questions");
-
-questions.forEach((q,i) => {
-  const d = document.createElement("div");
-  d.className = "question";
-  d.innerHTML = `
-    <div class="question-text">${i+1}. ${q}</div>
-    <div class="scale-row">
-      <span>1</span>
-      <input type="range" min="1" max="5" value="3" id="q${i}" oninput="updateValue(${i})">
-      <span>5</span>
-      <span class="scale-value" id="value${i}">3</span>
+function renderQuestions(){
+  const root=document.getElementById("selfQuestions");
+  root.innerHTML=questions.map((q,i)=>`
+    <div class="question">
+      <p>${i+1}. ${q}</p>
+      <div class="scale">
+        ${[1,2,3,4,5].map(n=>`
+          <label><input type="radio" name="q${i}" value="${n}">${n}</label>
+        `).join("")}
+      </div>
+      <div class="scale-legend"><span>Passer slet ikke</span><span>Passer helt</span></div>
     </div>
-    <div class="scale-labels">
-      <span>Passer slet ikke</span>
-      <span>Passer helt</span>
-    </div>`;
-  qContainer.appendChild(d);
-});
+  `).join("");
 
-// Opret DISC-spørgsmål
-const discContainer = document.getElementById("discQuestions");
-
-discQuestions.forEach(item => {
-  const d = document.createElement("div");
-  d.className = "question";
-  d.innerHTML = `
-    <div class="question-text">${item.statement}</div>
-    <div class="scale-row">
-      <span>1</span>
-      <input type="range" min="1" max="5" value="3" id="disc${item.id}" oninput="updateDiscValue('${item.id}')">
-      <span>5</span>
-      <span class="scale-value" id="discValue${item.id}">3</span>
+  document.getElementById("discQuestions").innerHTML=discItems.map(item=>`
+    <div class="disc-item">
+      <div><label for="disc${item.id}">${item.desc}</label></div>
+      <select id="disc${item.id}">
+        <option value="">Vælg styrke</option>
+        <option value="1">Passer slet ikke</option>
+        <option value="2">Passer i mindre grad</option>
+        <option value="3">Passer delvist</option>
+        <option value="4">Passer i høj grad</option>
+        <option value="5">Passer helt</option>
+      </select>
     </div>
-    <div class="scale-labels">
-      <span>Passer slet ikke</span>
-      <span>Passer helt</span>
-    </div>`;
-  discContainer.appendChild(d);
-});
-
-// Opret spørgsmål om deltagergruppen
-const gContainer = document.getElementById("groupQuestions");
-
-groupQuestions.forEach((item,i) => {
-  const d = document.createElement("div");
-  d.className = "question";
-  d.innerHTML = `
-    <div class="question-text">${i+1}. ${item.q}</div>
-    <div class="option-list">
-      ${item.a.map((a,j) => `
-        <label class="option">
-          <input type="radio" name="g${i}" value="${j}" ${j===3?"checked":""}>
-          <span>${a[0]}</span>
-        </label>
-      `).join("")}
-    </div>`;
-  gContainer.appendChild(d);
-});
-
-function updateValue(i) {
-  document.getElementById("value"+i).textContent =
-    document.getElementById("q"+i).value;
+  `).join("");
 }
 
-function updateDiscValue(id) {
-  document.getElementById("discValue"+id).textContent =
-    document.getElementById("disc"+id).value;
-}
-
-// Navigation mellem trinene
-function goTo(id,step) {
-  const sections = [
-    "caseSection",
-    "assessmentSection",
-    "groupSection",
-    "contextSection",
-    "resultsSection"
-  ];
-
-  sections.forEach(section => {
-    document.getElementById(section).classList.add("hidden");
-  });
-
-  document.getElementById(id).classList.remove("hidden");
-
-  document.querySelector(".progress").style.display =
-    id === "caseSection" ? "none" : "flex";
-
-  for(let i=1;i<=5;i++) {
-    document.getElementById("step"+i).classList.toggle("active",i<=step);
-  }
-
+function startTool(){
+  document.getElementById("welcome").classList.add("hidden");
+  document.getElementById("formArea").classList.remove("hidden");
+  showStep(0);
   window.scrollTo({top:0,behavior:"smooth"});
 }
+function goHome(){
+  document.getElementById("formArea").classList.add("hidden");
+  document.getElementById("welcome").classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function showStep(index){
+  document.querySelectorAll(".step").forEach((el,i)=>el.classList.toggle("hidden",i!==index));
+  document.getElementById("progress").style.width=((index+1)/4*100)+"%";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function nextStep(index){
+  if(index===1){
+    const unanswered=questions.findIndex((q,i)=>!document.querySelector(`input[name="q${i}"]:checked`));
+    if(unanswered!==-1){
+      alert("Besvar venligst alle 10 udsagn, før du går videre.");
+      document.querySelector(`input[name="q${unanswered}"]`).scrollIntoView({behavior:"smooth",block:"center"});
+      return;
+    }
+  }
+  showStep(index);
+}
+function val(id){return document.getElementById(id).value}
+function selectedAnswers(){
+  return questions.map((q,i)=>Number(document.querySelector(`input[name="q${i}"]:checked`)?.value||0));
+}
+function showResults(){
+  const unanswered=questions.findIndex((q,i)=>!document.querySelector(`input[name="q${i}"]:checked`));
+  if(unanswered!==-1){
+    alert("Husk at besvare alle 10 udsagn under Din facilitering.");
+    showStep(0);
+    return;
+  }
+  const answers=selectedAnswers();
+  const ranked=focusAreas.map(area=>({
+    ...area,
+    score:area.questions.reduce((sum,i)=>sum+answers[i],0)/area.questions.length
+  })).sort((a,b)=>b.score-a.score);
 
-// Beregn og vis resultater
-function showResults() {
-  const scored = principles.map(p => ({
-    ...p,
-    score:p.questions
-      .map(i => Number(document.getElementById("q"+i).value))
-      .reduce((a,b) => a+b,0)/2
-  }));
+  document.getElementById("formArea").classList.add("hidden");
+  document.getElementById("results").classList.remove("hidden");
+  document.getElementById("focusResults").innerHTML=ranked.slice(0,3).map((area,i)=>`
+    <div class="result-card">
+      <span class="result-label">Prioriteret fokuspunkt ${i+1}</span>
+      <h3><span class="result-number">${i+1}</span>${area.title}</h3>
+      <p>${area.action}</p>
+      <p class="why"><strong>Hvorfor være opmærksom?</strong> ${area.why}</p>
+      <p class="source">Fagligt afsæt: ${area.source}</p>
+    </div>
+  `).join("");
 
-  scored.sort((a,b) => b.score-a.score);
-
-  document.getElementById("results").innerHTML =
-    scored.slice(0,3).map((item,i) => `
-      <article class="result-card">
-        <div class="result-top">
-          <h3>${item.title}</h3>
-          <span class="priority">Prioritet ${i+1} · ${item.score.toFixed(1)} / 5</span>
-        </div>
-        <div class="result-label">Hvad skal du være opmærksom på?</div>
-        <p>${item.awareness}</p>
-        <div class="result-label">Hvorfor er det relevant?</div>
-        <p>${item.context}</p>
-        <div class="result-label">Hvad kan du konkret gøre?</div>
-        <p>${item.action}</p>
-        <p class="source">Knyttet til princip: ${item.source}</p>
-      </article>
-    `).join("");
-
-  // DISC-resultater
-  const discDescriptions = {
-    D:"Direkte, handlekraftig og styrende tilgang",
-    I:"Engagerende, udadvendt og relationsorienteret tilgang",
-    S:"Tålmodig, lyttende og samarbejdsorienteret tilgang",
-    C:"Struktureret, analytisk og grundig tilgang"
+  renderDiscResults();
+  renderGroupResults();
+  renderContextResults();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function renderDiscResults(){
+  const descriptions={
+    D:["Handlekraft og fremdrift","Du lægger vægt på initiativ, retning og fremdrift."],
+    I:["Dialog og involvering","Du lægger vægt på dialog, energi og involvering."],
+    S:["Stabilitet og samarbejde","Du lægger vægt på samarbejde, kontinuitet og tryghed."],
+    C:["Analyse og grundighed","Du lægger vægt på overblik, præcision og systematik."]
   };
-
-  const discHTML = discQuestions.map(item => {
-    const score = Number(document.getElementById("disc"+item.id).value);
-    return `
-      <div class="disc-card">
-        <strong>${item.id} · ${item.title}</strong>
-        <span class="disc-score">${score} / 5</span>
-        <div class="bar"><span style="width:${score*20}%"></span></div>
-        <p>${discDescriptions[item.id]}</p>
-      </div>`;
-  }).join("");
-
-  document.getElementById("discResults").innerHTML = discHTML;
-
-  // Deltagergruppen
-  const groupHTML = groupQuestions.map((item,i) => {
-    const selected = document.querySelector(`input[name="g${i}"]:checked`);
-    if(!selected) return "";
-
-    const response = item.a[Number(selected.value)][1];
-    if(!response.text) return "";
-
-    return `
-      <article class="result-card">
-        <h3>${item.q}</h3>
-        <p>${response.text}</p>
-        ${response.kind==="unknown" ?
-          '<p class="source">Du har ikke tilstrækkelige oplysninger på forhånd – undersøg dette ved workshopstart eller hos opdragsgiveren.</p>'
-          : ''}
-      </article>`;
-  }).join("");
-
-  document.getElementById("groupResults").innerHTML =
-    groupHTML ||
-    `<div class="summary">Der er ikke angivet oplysninger om deltagergruppen. Overvej at afklare de vigtigste forhold med opdragsgiveren inden workshoppen.</div>`;
-
-  // Workshoprammen
-  const area = document.getElementById("workArea").value;
-  const location = document.getElementById("location").value;
-  const size = document.getElementById("size").selectedOptions[0].textContent;
-  const purpose = document.getElementById("purpose").value;
-  const roomKnowledge = document.getElementById("roomKnowledge").value;
-
-  document.getElementById("contextSummary").innerHTML = `
-    <strong>Din workshop:</strong><br>
-    <span class="tag">${area}</span>
-    <span class="tag">${location}</span>
-    <span class="tag">${size}</span>
-    <span class="tag">${purpose}</span>
-    <span class="tag">${roomKnowledge}</span>`;
-
-  goTo("resultsSection",5);
+  const scores=discItems.map(item=>({id:item.id,score:Number(val("disc"+item.id)||0)}));
+  const any=scores.some(x=>x.score>0);
+  document.getElementById("discResults").innerHTML=any?scores.map(item=>{
+    const d=descriptions[item.id];
+    return `<div class="profile-box"><strong>${d[0]}</strong><span>${item.score?d[1]+" (din vurdering: "+item.score+"/5)": "Ikke besvaret"}</span></div>`;
+  }).join(""):`<div class="notice">Du har ikke udfyldt spørgsmålene om din personlige tilgang. Du kan stadig bruge dine øvrige fokuspunkter.</div>`;
 }
-
-// Nulstil værktøjet
-function resetTool() {
-  questions.forEach((_,i) => {
-    document.getElementById("q"+i).value = 3;
-    updateValue(i);
-  });
-
-  document.getElementById("workArea").selectedIndex = 0;
-  document.getElementById("location").selectedIndex = 0;
-  document.getElementById("size").selectedIndex = 1;
-  document.getElementById("purpose").selectedIndex = 0;
-  document.getElementById("roomKnowledge").selectedIndex = 0;
-
-  discQuestions.forEach(item => {
-    document.getElementById("disc"+item.id).value = 3;
-    updateDiscValue(item.id);
-  });
-
-  groupQuestions.forEach((_,i) => {
-    document.querySelector(`input[name="g${i}"][value="3"]`).checked = true;
-  });
-
-  goTo("caseSection",1);
+function renderGroupResults(){
+  const items=[
+    ["Arbejdsområder",val("groupType")],
+    ["Antal deltagere",val("groupSize")],
+    ["Kendskab til hinanden",val("knowEachOther")],
+    ["Erfaring med workshops",val("workshopExperience")],
+    ["Forhåndskendskab til emnet",val("changeKnowledge")],
+    ["Deltagernes forventninger",val("expectations")]
+  ];
+  const content=items.filter(x=>x[1]).map(x=>`<div class="result-card"><strong>${x[0]}</strong><p>${x[1]}</p></div>`).join("");
+  let advice=[];
+  if(val("knowEachOther").includes("Nej")||val("knowEachOther").includes("forskellige")){
+    advice.push("Overvej en kort indledning eller aktivitet, der hjælper deltagerne med at lære hinanden og formålet at kende.");
+  }
+  if(val("workshopExperience").includes("Begrænset")||val("workshopExperience").includes("forskellig")){
+    advice.push("Gør rammer, forventninger og arbejdsform tydelige, så alle kan følge med i processen.");
+  }
+  if(val("changeKnowledge").includes("introduceres")||val("changeKnowledge").includes("stor forskel")){
+    advice.push("Skab en fælles forståelse af emnet, før gruppen går videre til diskussion eller problemløsning.");
+  }
+  if(val("groupSize").includes("21")||val("groupSize").includes("Flere")){
+    advice.push("Overvej, hvordan du fordeler taletid og skaber plads til bidrag fra flere deltagere.");
+  }
+  if(!advice.length) advice.push("Brug din viden om gruppen til at tilpasse introduktion, tempo og deltagelsesformer. Undgå at antage, at alle deltagere har samme behov eller forudsætninger.");
+  document.getElementById("groupResults").innerHTML=`
+    ${content||'<p class="help">Du har ikke angivet oplysninger om deltagergruppen.</p>'}
+    <div class="notice"><strong>Overvej i din forberedelse:</strong><ul>${advice.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+  `;
 }
+function renderContextResults(){
+  const items=[
+    ["Lokation",val("location")],
+    ["Kendskab til lokalet",val("roomKnowledge")],
+    ["Forventet opstilling",val("setup")],
+    ["Rummets størrelse",val("roomSize")],
+    ["Mødetype",val("meetingType")],
+    ["Formål",val("purpose")],
+    ["Varighed",val("duration")],
+    ["Yderligere oplysninger",val("extraInfo")]
+  ];
+  const content=items.filter(x=>x[1]).map(x=>`<div class="result-card"><strong>${x[0]}</strong><p>${escapeHTML(x[1])}</p></div>`).join("");
+  let advice=[];
+  if(val("roomKnowledge").includes("ikke")||val("location").includes("ikke")){
+    advice.push("Undersøg om muligt lokalet på forhånd, eller planlæg hvordan du kan tilpasse din placering, når du ankommer.");
+  }
+  if(val("setup").includes("rækker")||val("setup").includes("auditorium")){
+    advice.push("Vær opmærksom på synlighed og øjenkontakt, så deltagere længere væk også oplever at blive inddraget.");
+  }
+  if(val("setup").includes("grupper")){
+    advice.push("Overvej hvordan du bevæger dig mellem grupperne uden at afbryde deres samtaler unødigt.");
+  }
+  if(val("purpose").includes("beslutning")){
+    advice.push("Vær tydelig i dine overgange mellem dialog, opsamling og beslutning.");
+  }
+  if(!advice.length) advice.push("Overvej, hvordan rummets indretning, varighed og formål påvirker dine muligheder for at bevæge dig, skabe kontakt og invitere deltagerne ind.");
+  document.getElementById("contextResults").innerHTML=`
+    ${content||'<p class="help">Du har ikke angivet oplysninger om rammer og formål.</p>'}
+    <div class="notice"><strong>Husk i din forberedelse:</strong><ul>${advice.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+  `;
+}
+function escapeHTML(str){
+  return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function restartTool(){
+  document.querySelectorAll('input[type="radio"]').forEach(el=>el.checked=false);
+  document.querySelectorAll("select").forEach(el=>el.selectedIndex=0);
+  document.querySelectorAll("textarea").forEach(el=>el.value="");
+  document.getElementById("results").classList.add("hidden");
+  document.getElementById("formArea").classList.add("hidden");
+  document.getElementById("welcome").classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+renderQuestions();
 </script>
-
 </body>
 </html>
