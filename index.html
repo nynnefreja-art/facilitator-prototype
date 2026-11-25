@@ -18,7 +18,7 @@ header{background:var(--navy);color:white;padding:34px 22px}
 h1{margin:8px 0;font-size:30px}
 header p{margin:0;color:#e1e9f0;max-width:700px}
 main{padding:28px 18px 60px}
-.progress{display:flex;gap:8px;margin-bottom:24px}
+.progress{display:none;gap:8px;margin-bottom:24px}
 .progress span{height:5px;flex:1;background:#dce3e9;border-radius:10px}
 .progress span.active{background:var(--blue)}
 .panel{background:white;border:1px solid var(--line);border-radius:14px;padding:25px;margin-bottom:20px;box-shadow:0 3px 12px rgba(32,51,74,.04)}
@@ -27,8 +27,7 @@ h3{color:var(--navy);margin:0 0 8px;font-size:18px}
 .intro{color:var(--muted);margin-top:0}
 .case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
 .case-item{background:var(--pale);border-radius:10px;padding:14px}
-.case-item strong{display:block;color:var(--navy);font-size:13px;margin-bottom:4px}
-.case-item span{font-size:14px}
+.case-item strong{display:block;color:var(--navy);font-size:13px}
 .question{padding:18px 0;border-bottom:1px solid var(--line)}
 .question:last-child{border-bottom:0}
 .question-text{font-weight:600;margin-bottom:12px}
@@ -100,19 +99,15 @@ footer{color:var(--muted);font-size:12px;text-align:center;padding:20px}
     <div class="case-grid">
       <div class="case-item">
         <strong>Din rolle</strong>
-        <span>Ekstern facilitator, som ikke kender deltagerne eller deres indbyrdes relationer.</span>
       </div>
       <div class="case-item">
         <strong>Deltagergruppen</strong>
-        <span>8 ledere fra forskellige afdelinger i en mellemstor virksomhed.</span>
       </div>
       <div class="case-item">
         <strong>Rammen</strong>
-        <span>En fysisk workshop med deltagere samlet i samme lokale.</span>
       </div>
       <div class="case-item">
         <strong>Formålet</strong>
-        <span>At skabe fælles forståelse for en kommende organisatorisk forandring og identificere centrale implementeringsudfordringer.</span>
       </div>
     </div>
 
@@ -225,17 +220,19 @@ footer{color:var(--muted);font-size:12px;text-align:center;padding:20px}
       <h2>Dit forslag til fokuspunkter</h2>
       <p class="intro">Her kombineres dine svar om dig selv, deltagergruppen og workshoprammen til et eksempel på personlige anbefalinger.</p>
 
-      <div id="contextSummary" class="summary"></div>
-
-      <h3>Dine DISC-inspirerede adfærdstendenser</h3>
-      <p class="intro">Profilen viser dine svar på fire adfærdsdimensioner. Den er til refleksion og er ikke en egentlig DISC-test.</p>
-      <div id="discResults" class="disc-grid"></div>
-
-      <h3>Dine nonverbale fokuspunkter</h3>
+      <h3>Dine vigtigste opmærksomhedspunkter</h3>
+      <p class="intro">Her er de tre områder, hvor dine svar peger på, at du med fordel kan rette særlig opmærksomhed mod din nonverbale facilitering.</p>
       <div id="results"></div>
 
-      <h3>Forberedelse på deltagergruppen</h3>
+      <h3 style="margin-top:30px">Din DISC-inspirerede profil</h3>
+      <p class="intro">Profilen viser dine svar på fire adfærdstendenser. Den er til refleksion og er ikke en egentlig DISC-test.</p>
+      <div id="discResults" class="disc-grid"></div>
+
+      <h3 style="margin-top:30px">Forberedelse på deltagergruppen</h3>
       <div id="groupResults"></div>
+
+      <h3 style="margin-top:30px">Workshoprammen</h3>
+      <div id="contextSummary" class="summary"></div>
 
       <div class="note">
         <strong>Om prototypen:</strong> Resultatet er en demonstration baseret på foruddefinerede regler og tekster – ikke en egentlig AI-analyse. I en færdig løsning kunne AI sammenholde de indsamlede profiler og workshopoplysninger med relevant forskning og generere mere nuancerede anbefalinger. Resultatet er vejledende og ikke en objektiv måling af facilitering eller deltagerengagement.
@@ -421,6 +418,9 @@ function goTo(id,step){
   });
 
   document.getElementById(id).classList.remove("hidden");
+
+  document.querySelector(".progress").style.display =
+    id === "caseSection" ? "none" : "flex";
 
   for(let i=1;i<=5;i++){
     document.getElementById("step"+i).classList.toggle("active",i<=step);
